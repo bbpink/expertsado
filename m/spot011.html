@@ -1,0 +1,202 @@
+<?php header("Content-type: application/xhtml+xml; charset=Shift-JIS"); ?>
+<?xml version="1.0" encoding="Shift-JIS"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+
+<head>
+  <meta http-equiv="content-type" content="application/xhtml+xml; charset=Shift-JIS" />
+  <meta name="keywords" content="佐渡" />
+  <title>上級者用佐渡観光 - 賽の河原</title>
+  <style>
+<![CDATA[
+a:link{color:#333333;}
+a:focus{color:#999999;}
+a:visited{color:#666666;}
+]]>
+  </style>
+</head>
+
+<body style="background-color:#bbbbbb;">
+
+  <div style="font-size:small;">
+
+<?php
+
+$GLOBALS['google']['ad_type']='text_image';
+$GLOBALS['google']['channel']='0001544877';
+$GLOBALS['google']['client']='pub-6515775211417770';
+$GLOBALS['google']['color_border']='333333';
+$GLOBALS['google']['color_bg']='EEEEEE';
+$GLOBALS['google']['color_link']='333333';
+$GLOBALS['google']['color_text']='333333';
+$GLOBALS['google']['color_url']='660000';
+$GLOBALS['google']['format']='mobile_single';
+$GLOBALS['google']['https']=read_global('HTTPS');
+$GLOBALS['google']['ip']=read_global('REMOTE_ADDR');
+$GLOBALS['google']['markup']='xhtml';
+$GLOBALS['google']['oe']='sjis';
+$GLOBALS['google']['output']='xhtml';
+$GLOBALS['google']['ref']=read_global('HTTP_REFERER');
+$GLOBALS['google']['url']=read_global('HTTP_HOST') . read_global('REQUEST_URI');
+$GLOBALS['google']['useragent']=read_global('HTTP_USER_AGENT');
+$google_dt = time();
+google_set_screen_res();
+google_set_muid();
+google_set_via_and_accept();
+function read_global($var) {
+  return isset($_SERVER[$var]) ? $_SERVER[$var]: '';
+}
+
+function google_append_url(&$url, $param, $value) {
+  $url .= '&' . $param . '=' . urlencode($value);
+}
+
+function google_append_globals(&$url, $param) {
+  google_append_url($url, $param, $GLOBALS['google'][$param]);
+}
+
+function google_append_color(&$url, $param) {
+  global $google_dt;
+  $color_array = split(',', $GLOBALS['google'][$param]);
+  google_append_url($url, $param,
+                    $color_array[$google_dt % sizeof($color_array)]);
+}
+
+function google_set_screen_res() {
+  $screen_res = read_global('HTTP_UA_PIXELS');
+  if ($screen_res == '') {
+    $screen_res = read_global('HTTP_X_UP_DEVCAP_SCREENPIXELS');
+  }
+  if ($screen_res == '') {
+    $screen_res = read_global('HTTP_X_JPHONE_DISPLAY');
+  }
+  $res_array = split('[x,*]', $screen_res);
+  if (sizeof($res_array) == 2) {
+    $GLOBALS['google']['u_w'] = $res_array[0];
+    $GLOBALS['google']['u_h'] = $res_array[1];
+  }
+}
+
+function google_set_muid() {
+  $muid = read_global('HTTP_X_DCMGUID');
+  if ($muid != '') {
+    $GLOBALS['google']['muid'] = $muid;
+  }
+  $muid = read_global('HTTP_X_UP_SUBNO');
+  if ($muid != '') {
+    $GLOBALS['google']['muid'] = $muid;
+  }
+  $muid = read_global('HTTP_X_JPHONE_UID');
+  if ($muid != '') {
+    $GLOBALS['google']['muid'] = $muid;
+  }
+  $muid = read_global('HTTP_X_EM_UID');
+  if ($muid != '') {
+    $GLOBALS['google']['muid'] = $muid;
+  }
+}
+
+function google_set_via_and_accept() {
+  $ua = read_global('HTTP_USER_AGENT');
+  if ($ua == '') {
+     $GLOBALS['google']['via'] = read_global('HTTP_VIA');
+     $GLOBALS['google']['accept'] = read_global('HTTP_ACCEPT');
+  }
+}
+
+function google_get_ad_url() {
+  $google_ad_url = 'http://pagead2.googlesyndication.com/pagead/ads?';
+  google_append_url($google_ad_url, 'dt',
+                    round(1000 * array_sum(explode(' ', microtime()))));
+  foreach ($GLOBALS['google'] as $param => $value) {
+    if ($param == 'client') {
+      google_append_url($google_ad_url, $param,
+                        'ca-mb-' . $GLOBALS['google'][$param]);
+    } else if (strpos($param, 'color_') === 0) {
+      google_append_color($google_ad_url, $param);
+    } else if (strpos($param, 'url') === 0) {
+      $google_scheme = ($GLOBALS['google']['https'] == 'on')
+          ? 'https://' : 'http://';
+      google_append_url($google_ad_url, $param,
+                        $google_scheme . $GLOBALS['google'][$param]);
+    } else {
+      google_append_globals($google_ad_url, $param);
+    }
+  }
+  return $google_ad_url;
+}
+
+$google_ad_handle = @fopen(google_get_ad_url(), 'r');
+if ($google_ad_handle) {
+  while (!feof($google_ad_handle)) {
+    echo fread($google_ad_handle, 8192);
+  }
+  fclose($google_ad_handle);
+}
+
+?>
+
+    <div>
+      <p style="text-align:center;">
+	<a href="./spot001.html">乙和池</a> | <a href="./spot002.html">高原廃墟</a> | <a href="./spot003.html">地獄谷</a><br />
+	<a href="./spot004.html">金山</a> | <a href="./spot005.html">無宿人の墓</a><br />
+	<a href="./spot006.html">二つ岩大明神</a> | <a href="./spot007.html">キリシタン塚</a><br />
+	<a href="./spot008.html">ホテルおもだか</a> | <a href="./spot009.html">中山トンネル</a><br />
+	<a href="./spot010.html">海府大橋</a> | <a href="./spot011.html">賽の河原</a><br />
+	<a href="./spot012.html">梨の木地蔵</a> | <a href="./spot013.html">阿仏房妙宣寺</a>
+      </p>
+    </div>
+
+    <div style="text-align:center;">
+      <span style="font-size:large;">賽の河原</span><br />
+      恐怖度:<span style="color:#ffd400;">★★</span>
+    </div>
+
+    <p>佐渡で最も怖いポイント、賽の河原。</p>
+    <p>石や玩具など、とにかく何かを持ち帰ると確定で呪われると言われており、誤って小石がポケットに入ったまま帰った青年が事故で死亡したとか。</p>
+    <p>付近は岩場となっており、子を想う母親によりあちこちに石が積まれている。もちろん石を崩してもアウトなので気をつけたほうがいいだろう。</p>
+
+    <div>
+      <p style="text-align:center;">
+        <a href="./img/m_spot011_000.jpg"><img src="./img/thumbs/th_m_spot011_000.jpg" /></a>
+        <a href="./img/m_spot011_001.jpg"><img src="./img/thumbs/th_m_spot011_001.jpg" /></a>
+        <a href="./img/m_spot011_002.jpg"><img src="./img/thumbs/th_m_spot011_002.jpg" /></a>
+        <a href="./img/m_spot011_003.jpg"><img src="./img/thumbs/th_m_spot011_003.jpg" /></a>
+        <a href="./img/m_spot011_004.jpg"><img src="./img/thumbs/th_m_spot011_004.jpg" /></a>
+        <a href="./img/m_spot011_005.jpg"><img src="./img/thumbs/th_m_spot011_005.jpg" /></a>
+        <a href="./img/m_spot011_006.jpg"><img src="./img/thumbs/th_m_spot011_006.jpg" /></a>
+        <a href="./img/m_spot011_007.jpg"><img src="./img/thumbs/th_m_spot011_007.jpg" /></a>
+        <a href="./img/m_spot011_008.jpg"><img src="./img/thumbs/th_m_spot011_008.jpg" /></a>
+        <a href="./img/m_spot011_009.jpg"><img src="./img/thumbs/th_m_spot011_009.jpg" /></a>
+        <a href="./img/m_spot011_010.jpg"><img src="./img/thumbs/th_m_spot011_010.jpg" /></a>
+        <a href="./img/m_spot011_011.jpg"><img src="./img/thumbs/th_m_spot011_011.jpg" /></a>
+        <a href="./img/m_spot011_012.jpg"><img src="./img/thumbs/th_m_spot011_012.jpg" /></a>
+        <a href="./img/m_spot011_013.jpg"><img src="./img/thumbs/th_m_spot011_013.jpg" /></a>
+        <a href="./img/m_spot011_014.jpg"><img src="./img/thumbs/th_m_spot011_014.jpg" /></a>
+        <a href="./img/m_spot011_015.jpg"><img src="./img/thumbs/th_m_spot011_015.jpg" /></a>
+        <a href="./img/m_spot011_016.jpg"><img src="./img/thumbs/th_m_spot011_016.jpg" /></a>
+        <a href="./img/m_spot011_017.jpg"><img src="./img/thumbs/th_m_spot011_017.jpg" /></a>
+        <a href="./img/m_spot011_018.jpg"><img src="./img/thumbs/th_m_spot011_018.jpg" /></a>
+        <a href="./img/m_spot011_019.jpg"><img src="./img/thumbs/th_m_spot011_019.jpg" /></a>
+        <a href="./img/m_spot011_020.jpg"><img src="./img/thumbs/th_m_spot011_020.jpg" /></a>
+        <a href="./img/m_spot011_021.jpg"><img src="./img/thumbs/th_m_spot011_021.jpg" /></a>
+        <a href="./img/m_spot011_022.jpg"><img src="./img/thumbs/th_m_spot011_022.jpg" /></a>
+        <a href="./img/m_spot011_023.jpg"><img src="./img/thumbs/th_m_spot011_023.jpg" /></a>
+        <a href="./img/m_spot011_024.jpg"><img src="./img/thumbs/th_m_spot011_024.jpg" /></a>
+        <a href="./img/m_spot011_025.jpg"><img src="./img/thumbs/th_m_spot011_025.jpg" /></a>
+        <a href="./img/m_spot011_026.jpg"><img src="./img/thumbs/th_m_spot011_026.jpg" /></a>
+        <a href="./img/m_spot011_027.jpg"><img src="./img/thumbs/th_m_spot011_027.jpg" /></a>
+        <a href="./img/m_spot011_028.jpg"><img src="./img/thumbs/th_m_spot011_028.jpg" /></a>
+        <a href="./img/m_spot011_029.jpg"><img src="./img/thumbs/th_m_spot011_029.jpg" /></a>
+        <a href="./img/m_spot011_030.jpg"><img src="./img/thumbs/th_m_spot011_030.jpg" /></a>
+      </p>
+    </div>
+
+    <p style="text-align:center;">&copy; <a href="http://www.sevensenses.jp/">Sevensenses</a></p>
+
+  </div>
+
+</body>
+
+</html>
