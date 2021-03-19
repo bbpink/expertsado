@@ -1,0 +1,41 @@
+@charset "utf-8";
+
+body > footer {
+  background-color: $black;
+  padding: spsize(40) 0 spsize(80);
+
+  .footer__social-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    li {
+      margin: 0 spsize(16);
+    }
+
+    &--twitter {
+      a {
+        img {
+          width: spsize(56);
+          height: spsize(56);
+        }
+      }
+    }
+
+    &--facebook {
+      a {
+        img {
+          width: spsize(56);
+          height: spsize(56);
+        }
+      }
+    }
+  }
+
+  .footer__copyright {
+    margin-top: spsize(40);
+    font-size: spsize(16);
+    text-align: center;
+    color: $white;
+  }
+}

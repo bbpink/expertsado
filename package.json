@@ -1,0 +1,23 @@
+{
+  "name": "expertsado",
+  "version": "2.0.0",
+  "description": "",
+  "main": "render.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node render.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:bbpink/expertsado.git"
+  },
+  "author": "bbpink",
+  "license": "closed",
+  "bugs": {
+    "url": "https://github.com/bbpink/expertsado/issues"
+  },
+  "dependencies": {
+    "twig": "*",
+    "sass": "*"
+  }
+}

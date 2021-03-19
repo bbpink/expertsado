@@ -1,0 +1,33 @@
+@charset "utf-8";
+
+@import "foundations/reset";
+@import "foundations/colors";
+@import "foundations/fonts";
+@import "foundations/mixins";
+
+br.pc {
+  display: none;
+  @include for_pc {
+    display: inline;
+  }
+}
+
+br.sp {
+  @include for_pc {
+    display: none;
+  }
+}
+
+body {
+  background-color: $beige;
+  @include font-01;
+  @include font-normal;
+}
+
+@import "layouts/header";
+@import "layouts/footer";
+@import "layouts/spots";
+@import "layouts/adsense";
+
+@import "pages/index";
+@import "pages/spot";

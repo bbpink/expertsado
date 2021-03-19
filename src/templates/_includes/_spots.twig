@@ -1,0 +1,26 @@
+{% for category in spots %}
+    <section class="spots">
+      <h3 class="spots__header">
+        <div class="spots__header--icon">
+          <img src="/assets/images/category_{{ "%02d"|format(category.id) }}.svg">
+        </div>
+        <div class="spots__header--title">{{ category.name }}</div>
+      </h3>
+
+      <ul class="spots__list">
+{% for spot in category.spots %}
+        <li class="spots__list--item">
+          <a href="/spot{{ "%03d"|format(spot.id) }}.html">
+            <picture>
+              <source media="(min-width: {{ break_point }})" srcset="/assets/images/spot_{{ "%02d"|format(spot.id) }}_pc@1x.jpg 1x, /assets/images/spot_{{ "%02d"|format(spot.id) }}_pc@2x.jpg 2x" />
+              <img srcset="/assets/images/spot_{{ "%02d"|format(spot.id) }}_sp@1x.jpg 1x, /assets/images/spot_{{ "%02d"|format(spot.id) }}_sp@2x.jpg 2x" alt="{{ spot.name }}" />
+            </picture>
+
+            <h5>{{ spot.name }}</h5>
+          </a>
+        </li>
+{% endfor %}
+      </ul>
+    </section>
+
+{% endfor %}
