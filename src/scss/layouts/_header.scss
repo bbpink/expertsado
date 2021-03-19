@@ -3,6 +3,7 @@
 body > header {
   h1 {
     padding: spsize(8) spsize(16);
+
     a {
       display: block;
       img {
@@ -16,6 +17,11 @@ body > header {
     width: 100%;
     background: center center / cover url(/assets/images/firstview_sp.jpg);
     height: spsize(400);
+    @include pc {
+      background: center center / cover url(/assets/images/firstview_pc.jpg);
+      height: 600px;
+    }
+
     h1 {
       width: 100%;
       height: 100%;
@@ -26,6 +32,10 @@ body > header {
         img {
           width: spsize(298);
           height: spsize(58);
+          @include pc {
+            width: 448px;
+            height: 83px;
+          }
         }
       }
     }

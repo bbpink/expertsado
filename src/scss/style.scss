@@ -7,13 +7,13 @@
 
 br.pc {
   display: none;
-  @include for_pc {
+  @include pc {
     display: inline;
   }
 }
 
 br.sp {
-  @include for_pc {
+  @include pc {
     display: none;
   }
 }

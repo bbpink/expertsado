@@ -4,5 +4,10 @@
   &.type01 {
     margin: spsize(80) 0;
     padding: 0 spsize(20);
+    @include pc {
+      margin: 160px auto 80px;
+      width: 1082px;
+      padding: 0;
+    }
   }
 }

@@ -1,6 +1,6 @@
 @charset "utf-8";
 
-@mixin for_pc {
+@mixin pc {
   @media screen and (min-width: 961px) {
     @content;
   }

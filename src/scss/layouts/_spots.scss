@@ -2,9 +2,15 @@
 
 .spots {
   margin-top: spsize(120);
+  @include pc {
+    margin-top: 120px;
+  }
 
   &:not(:first-of-type) {
     margin-top: spsize(80);
+    @include pc {
+      margin-top: 120px;
+    }
   }
 
   &__header {
@@ -14,6 +20,10 @@
         height: spsize(40);
         display: block;
         margin: 0 auto;
+        @include pc {
+          width: 48px;
+          height: 48px;
+        }
       }
     }
 
@@ -23,15 +33,38 @@
       letter-spacing: -0.025em;
       @include font-bold;
       text-align: center;
+
+      @include pc {
+        margin-top: 16px;
+        font-size: 32px;
+      }
     }
   }
 
   &__list {
     margin-top: spsize(30);
+    @include pc {
+      width: 1082px;
+      margin: 45px auto 0;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
     &--item {
       width: 100%;
       height: spsize(80);
       margin-top: 2px;
+      @include pc {
+        width: 330px;
+        height: 120px;
+      }
+
+      &:nth-of-type(n + 4) {
+        @include pc {
+          margin-top: 45px;
+        }
+      }
 
       a {
         display: block;
@@ -62,6 +95,17 @@
           color: $white;
           background-color: rgba(0, 0, 0, 0.3);
           @include font-normal;
+          @include pc {
+            padding: 80px 18px 0 0;
+            font-size: 18px;
+            transition: all .2s ease-out;
+          }
+
+          &:hover {
+            @include pc {
+              background-color: rgba(0, 0, 0, 0.02);
+            }
+          }
         }
       }
     }
